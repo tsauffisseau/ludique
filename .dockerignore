@@ -1,0 +1,8 @@
+.env
+.git
+data/
+learning/
+**/__pycache__
+.pytest_cache
+.ruff_cache
+.vscode

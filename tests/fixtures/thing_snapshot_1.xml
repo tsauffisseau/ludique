@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+  <!-- Clean, well-rated game -->
+  <item type="boardgame" id="1">
+    <thumbnail>https://example.org/alpha_t.png</thumbnail>
+    <image>https://example.org/alpha.png</image>
+    <name type="primary" sortindex="1" value="Alpha" />
+    <name type="alternate" sortindex="1" value="Alpha (FR)" />
+    <description>A game about &amp;quot;alphas&amp;quot;.&#10;&#10;Second line.</description>
+    <yearpublished value="2018" />
+    <minplayers value="2" />
+    <maxplayers value="4" />
+    <poll-summary name="suggested_numplayers" title="User Suggested Number of Players">
+      <result name="bestwith" value="Best with 3–4 players" />
+      <result name="recommmendedwith" value="Recommended with 2–4 players" />
+    </poll-summary>
+    <playingtime value="60" />
+    <minplaytime value="45" />
+    <maxplaytime value="60" />
+    <minage value="10" />
+    <link type="boardgamecategory" id="1002" value="Card Game" />
+    <link type="boardgamemechanic" id="2040" value="Hand Management" />
+    <link type="boardgamemechanic" id="2004" value="Set Collection" />
+    <link type="boardgamedesigner" id="100" value="Jane Doe" />
+    <link type="boardgamepublisher" id="500" value="Acme Games" />
+    <statistics page="1">
+      <ratings>
+        <usersrated value="120" />
+        <average value="7.5" />
+        <bayesaverage value="6.5" />
+        <ranks>
+          <rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="1500" bayesaverage="6.5" />
+        </ranks>
+        <stddev value="1.2" />
+        <median value="0" />
+        <owned value="500" />
+        <trading value="5" />
+        <wanting value="10" />
+        <wishing value="100" />
+        <numcomments value="40" />
+        <numweights value="20" />
+        <averageweight value="2.5" />
+      </ratings>
+    </statistics>
+  </item>
+
+  <!-- BGG "unknown" zeros everywhere + min_players > max_players -->
+  <item type="boardgame" id="2">
+    <name type="primary" sortindex="1" value="Beta" />
+    <description></description>
+    <yearpublished value="0" />
+    <minplayers value="4" />
+    <maxplayers value="2" />
+    <poll-summary name="suggested_numplayers" title="User Suggested Number of Players">
+      <result name="bestwith" value="" />
+      <result name="recommmendedwith" value="(no votes)" />
+    </poll-summary>
+    <playingtime value="0" />
+    <minplaytime value="0" />
+    <maxplaytime value="0" />
+    <minage value="0" />
+    <link type="boardgamecategory" id="1017" value="Dice" />
+    <link type="boardgamemechanic" id="2072" value="Dice Rolling" />
+    <statistics page="1">
+      <ratings>
+        <usersrated value="0" />
+        <average value="0" />
+        <bayesaverage value="0" />
+        <ranks>
+          <rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="Not Ranked" bayesaverage="Not Ranked" />
+        </ranks>
+        <stddev value="0" />
+        <median value="0" />
+        <owned value="3" />
+        <trading value="0" />
+        <wanting value="0" />
+        <wishing value="1" />
+        <numcomments value="0" />
+        <numweights value="0" />
+        <averageweight value="0" />
+      </ratings>
+    </statistics>
+  </item>
+
+  <!-- Solo monster game: 2000-minute playing time (soft anomaly, kept) -->
+  <item type="boardgame" id="3">
+    <name type="primary" sortindex="1" value="Gamma" />
+    <description>Long.</description>
+    <yearpublished value="2021" />
+    <minplayers value="1" />
+    <maxplayers value="1" />
+    <poll-summary name="suggested_numplayers" title="User Suggested Number of Players">
+      <result name="bestwith" value="Best with 1 player" />
+      <result name="recommmendedwith" value="Recommended with 1 player" />
+    </poll-summary>
+    <playingtime value="2000" />
+    <minplaytime value="600" />
+    <maxplaytime value="2000" />
+    <minage value="14" />
+    <link type="boardgamecategory" id="1002" value="Card Game" />
+    <link type="boardgamecategory" id="1019" value="Wargame" />
+    <link type="boardgamemechanic" id="2040" value="Hand Management" />
+    <link type="boardgamemechanic" id="2072" value="Dice Rolling" />
+    <link type="boardgamedesigner" id="100" value="Jane Doe" />
+    <statistics page="1">
+      <ratings>
+        <usersrated value="45" />
+        <average value="8.1" />
+        <bayesaverage value="5.9" />
+        <ranks>
+          <rank type="subtype" id="1" name="boardgame" friendlyname="Board Game Rank" value="9000" bayesaverage="5.9" />
+        </ranks>
+        <stddev value="1.5" />
+        <median value="0" />
+        <owned value="80" />
+        <trading value="1" />
+        <wanting value="4" />
+        <wishing value="60" />
+        <numcomments value="12" />
+        <numweights value="10" />
+        <averageweight value="4.2" />
+      </ratings>
+    </statistics>
+  </item>
+
+  <!-- Breaks the contract (rating > 10): must land in quarantine -->
+  <item type="boardgame" id="5">
+    <name type="primary" sortindex="1" value="Delta" />
+    <yearpublished value="2020" />
+    <minplayers value="2" />
+    <maxplayers value="2" />
+    <playingtime value="20" />
+    <link type="boardgamemechanic" id="2040" value="Hand Management" />
+    <statistics page="1">
+      <ratings>
+        <usersrated value="3" />
+        <average value="11" />
+        <bayesaverage value="0" />
+        <ranks>
+          <rank type="subtype" id="1" name="boardgame" value="Not Ranked" />
+        </ranks>
+        <stddev value="0" />
+        <owned value="2" />
+        <trading value="0" />
+        <wanting value="0" />
+        <wishing value="0" />
+        <numcomments value="0" />
+        <numweights value="0" />
+        <averageweight value="0" />
+      </ratings>
+    </statistics>
+  </item>
+
+  <!-- Expansions are out of scope and must be ignored -->
+  <item type="boardgameexpansion" id="4">
+    <name type="primary" sortindex="1" value="Alpha: Expansion" />
+  </item>
+</items>

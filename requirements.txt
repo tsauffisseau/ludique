@@ -1,0 +1,16 @@
+# Runtime
+requests>=2.32
+truststore>=0.9        # use the OS certificate store (corporate proxies, antivirus TLS inspection)
+pandas>=2.2
+pyarrow>=16
+pydantic>=2.7
+psycopg[binary]>=3.2
+scikit-learn>=1.5
+python-dotenv>=1.0
+# Dashboard
+streamlit>=1.38
+plotly>=5.22
+# Dev
+pytest>=8.2
+ruff>=0.6
+# Optional: S3 export for Athena -> pip install boto3

@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: bgg
+          POSTGRES_PASSWORD: bgg
+          POSTGRES_DB: bgg_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U bgg" --health-interval 2s --health-timeout 3s --health-retries 30
+    env:
+      BGG_TEST_PG_DSN: postgresql://bgg:bgg@localhost:5432/bgg_test
+      BGG_PG_DSN: postgresql://bgg:bgg@localhost:5432/bgg_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: make install
+      - run: make lint
+      - run: make test
+      - name: Full pipeline on the synthetic sample (fails on blocking DQ issues)
+        run: make run-pipeline
+      - name: Analytical SQL queries
+        run: make analysis
+      - uses: actions/upload-artifact@v4
+        with:
+          name: data-quality-report
+          path: reports/
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: docker compose - pipeline end to end
+        run: docker compose up --build --abort-on-container-exit --exit-code-from pipeline postgres pipeline

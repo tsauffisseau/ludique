@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items termsofuse="https://boardgamegeek.com/xmlapi/termsofuse">
+  <!-- Later snapshot of game 1: more ratings, one mechanic removed. Must win the dedup. -->
+  <item type="boardgame" id="1">
+    <name type="primary" sortindex="1" value="Alpha (2nd edition)" />
+    <yearpublished value="2018" />
+    <minplayers value="2" />
+    <maxplayers value="4" />
+    <playingtime value="60" />
+    <link type="boardgamecategory" id="1002" value="Card Game" />
+    <link type="boardgamemechanic" id="2040" value="Hand Management" />
+    <link type="boardgamedesigner" id="100" value="Jane Doe" />
+    <link type="boardgamepublisher" id="500" value="Acme Games" />
+    <statistics page="1">
+      <ratings>
+        <usersrated value="150" />
+        <average value="7.6" />
+        <bayesaverage value="6.6" />
+        <ranks>
+          <rank type="subtype" id="1" name="boardgame" value="1400" />
+        </ranks>
+        <stddev value="1.1" />
+        <owned value="600" />
+        <trading value="5" />
+        <wanting value="10" />
+        <wishing value="110" />
+        <numcomments value="45" />
+        <numweights value="22" />
+        <averageweight value="2.6" />
+      </ratings>
+    </statistics>
+  </item>
+</items>

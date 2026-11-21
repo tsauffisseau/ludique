@@ -1,0 +1,66 @@
+# docker compose up            -> PostgreSQL + pipeline (offline sample) + dashboard on :8501
+# docker compose run --rm pipeline python -m bgg_pipeline analysis
+# docker compose cp pipeline:/app/reports ./reports   -> data-quality report
+# docker compose --profile live run --rm refresh   -> weekly snapshot from the real API (needs BGG_API_TOKEN)
+
+x-pipeline-env: &pipeline-env
+  BGG_PG_DSN: postgresql://${POSTGRES_USER:-bgg}:${POSTGRES_PASSWORD:-bgg}@postgres:5432/${POSTGRES_DB:-bgg}
+  BGG_DATA_DIR: /app/data
+  BGG_REPORTS_DIR: /app/reports
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-bgg}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bgg}
+      POSTGRES_DB: ${POSTGRES_DB:-bgg}
+    ports:
+      # Host port configurable: many machines already run a PostgreSQL on 5432.
+      - "${BGG_PG_HOST_PORT:-55432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  pipeline:
+    build: .
+    command: ["pipeline"]
+    environment: *pipeline-env
+    volumes:
+      - lake:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  dashboard:
+    build: .
+    command: ["dashboard"]
+    environment: *pipeline-env
+    ports:
+      - "${BGG_DASHBOARD_PORT:-8501}:8501"
+    depends_on:
+      pipeline:
+        condition: service_completed_successfully
+
+  # Weekly incremental snapshot from the live BGG API (opt-in: needs a registered token).
+  # Schedule it with cron / Task Scheduler / an Airflow DAG: one command, idempotent.
+  refresh:
+    build: .
+    profiles: ["live"]
+    command: ["python", "-m", "bgg_pipeline", "refresh"]
+    environment:
+      <<: *pipeline-env
+      BGG_API_TOKEN: ${BGG_API_TOKEN:-}
+    volumes:
+      - lake:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  lake:

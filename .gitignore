@@ -1,0 +1,31 @@
+# Secrets - never commit API tokens
+.env
+
+# Generated data (rebuilt by `make run-pipeline`); the offline snapshot lives in sample_data/
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+dist/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Personal learning notes & exercises (kept local; remove this line to publish them)
+learning/
+
+# Real BGG API data: kept local only (BGG licence: non-commercial, no redistribution)
+local_data/
+
+# Generated on every run (a real-data copy lives in docs/results/)
+reports/
